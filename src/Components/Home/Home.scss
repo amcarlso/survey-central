@@ -13,7 +13,7 @@
     right: 0;
     background: tan;
     transition: 0.7s;
-    z-index: 2;
+    // z-index: 2;
     .cancel-menu {
       top: 5px;
       margin-right: 285px;
@@ -41,23 +41,18 @@
   .menu-button-show {
     margin-right: 0px; 
   }
-  .input-container {
-    height: 25rem;
-    width: 30em;
-    background: rgb(202, 202, 202);
-    padding: 0.2rem;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    .each-input {
-      margin: 0 auto; 
-      display: flex;
-      align-items: center; 
-    }
-    input {
-      margin: 0.1rem;
-    }
+  .modal-parent {
+    z-index: 3;
+    transition: 0.9s;
+  }
+  .modal-show {
+    opacity: 0.7;
+    display: initial;
+    transition: 0.9s;
+  }
+  .modal-hide {
+    display: none;
+    transition: 0.9s;
   }
 }
 

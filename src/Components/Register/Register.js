@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import './Register.scss';
 
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {

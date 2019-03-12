@@ -23,14 +23,28 @@ export default class Home extends Component {
     this.setState({menuShow: !this.state.menuShow})
   }
 
+  handleLoginModal = () => {
+    this.setState({
+      login: !this.state.login,
+      register: false
+    })
+  }
+
+  handleRegisterModal = () => {
+    this.setState({
+      register: !this.state.register,
+      login: false
+    })
+  }
+
   render() {
-    const { menuShow } = this.state;
+    const { menuShow, login, register } = this.state;
     return (
       <div className="home">
         <div className={menuShow ? 'menu menu-show' : 'menu menu-hide'}>
           <div className='cancel-menu' onClick={() => this.handleMenuToggle()}>X</div>
-          <div>Login</div>
-          <div>Register</div>
+          <div onClick={() => this.handleLoginModal()}>Login</div>
+          <div onClick={() => this.handleRegisterModal()}>Register</div>
         </div>
         <div 
           className={menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
@@ -38,10 +52,10 @@ export default class Home extends Component {
         >
           Menu
         </div>
-        <div className='register-parent'>
+        <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
           <Login />
         </div>
-        <div className='login-parent'>
+        <div className={register ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
           <Register />
         </div>
       </div>
