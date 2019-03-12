@@ -1,62 +1,47 @@
-.app {
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .menu {
-    position: absolute;
-    height: 100vh;
-    width: 300px;
-    left: 0;
-    background: tan;
-    transition: 0.7s;
-    z-index: 2;
-    .cancel-menu {
-      top: 5px;
-      margin-left: 285px;
-    }
-  }
-  .menu-hide {
-    margin-left: -300px;
-  }
-  .menu-show {
-    margin-left: 0;
-  }
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
 
-  .menu-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    height: 50px;
-    width: 50px;
-    background: gray;
-    transition: 0.7s;
-  }
-  .menu-button-hide {
-    margin-left: -70px;
-  }
-  .menu-button-show {
-    margin-left: 0px; 
-  }
-  .input-container {
-    height: 25rem;
-    width: 30em;
-    background: rgb(202, 202, 202);
-    padding: 0.2rem;
-    border-radius: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    .each-input {
-      margin: 0 auto; 
-      display: flex;
-      align-items: center; 
-    }
-    input {
-      margin: 0.1rem;
-    }
-  }
+* { box-sizing: border-box;
 }
 
