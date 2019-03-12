@@ -14,6 +14,7 @@ export default class Register extends Component {
     return (
       <div className='modal'>
         <div className='input-container'>
+          <div className='cancel-menu' onClick={() => this.props.handleRegisterModal()}>X</div>
           <div className='each-input'>
             <p>Name: </p>
             <input  type='text' onChange={(e) => this.handleInput('name', e)}/>

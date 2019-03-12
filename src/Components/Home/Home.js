@@ -53,10 +53,10 @@ export default class Home extends Component {
           Menu
         </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Login />
+          <Login handleInput={this.handleInput} handleLoginModal={this.handleLoginModal}/>
         </div>
         <div className={register ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Register />
+          <Register handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal}/>
         </div>
       </div>
     )
