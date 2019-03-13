@@ -1,4 +1,7 @@
+@import '../../sassVars.scss';
 .home {
+  font-family: $mainFont;
+  font-weight: 600;
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -11,9 +14,10 @@
     height: 100vh;
     width: 300px;
     right: 0;
-    background: tan;
+    background: $background;
     transition: 0.7s;
     z-index: 2;
+    color: $lightFontColor;
     .cancel-menu {
       top: 5px;
       margin-right: 5px;
@@ -30,9 +34,14 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    height: 50px;
-    width: 50px;
-    background: gray;
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $background;
+    color: $lightFontColor;
     transition: 0.7s;
   }
   .menu-button-hide {
@@ -43,7 +52,13 @@
   }
   .modal-parent {
     position: absolute;
-    transition: 0.9s;
+    height: 100vh;
+    width: 100vw;
+    transition: 1.2s;
+    background: $background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .modal-show {
     opacity: 1;
@@ -52,6 +67,9 @@
   .modal-hide {
     opacity: 0;
     z-index: -1;
+  }
+  header {
+    font-size: 3rem;
   }
 }
 

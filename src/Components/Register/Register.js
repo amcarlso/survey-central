@@ -21,7 +21,7 @@ export default class Register extends Component {
           </div>
           <div className='each-input'>
             <p>Email: </p>
-            <input  type='number' onChange={(e) => this.handleInput('email', e)}/>
+            <input  type='text' onChange={(e) => this.handleInput('email', e)}/>
           </div>
           <div className='each-input'>
             <p>Password: </p>

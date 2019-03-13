@@ -1,7 +1,9 @@
+@import '../../sassVars.scss';
 .modal {
-  height: 100vh;
-  width: 100vw;
-  background: lightgray;
+  height: 25rem;
+  width: 30em;
+  border-radius: 2rem;
+  background: $lightFontColor;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,9 +12,8 @@
     position: relative;
     height: 25rem;
     width: 30em;
-    background: rgb(202, 202, 202);
+    background: $lightFontColor;
     padding: 0.2rem;
-    border-radius: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -28,6 +29,9 @@
     }
     input {
       margin: 0.1rem;
+      border: none;
+      border-bottom: 1px solid lightgray;
+      background: transparent;
     }
   }
 }

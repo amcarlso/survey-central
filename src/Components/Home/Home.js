@@ -38,13 +38,24 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.state)
     const { menuShow, login, register } = this.state;
     return (
       <div className="home">
         <div className={menuShow ? 'menu menu-show' : 'menu menu-hide'}>
           <div className='cancel-menu' onClick={() => this.handleMenuToggle()}>X</div>
-          <div onClick={() => this.handleLoginModal()}>Login</div>
-          <div onClick={() => this.handleRegisterModal()}>Register</div>
+          <div onClick={() => {
+              this.handleLoginModal();
+              this.handleMenuToggle();
+            }
+          }
+          >Login</div>
+          <div onClick={() => {
+              this.handleRegisterModal();
+              this.handleMenuToggle();
+            }
+          }
+          >Register</div>
         </div>
         <div 
           className={menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
@@ -52,6 +63,7 @@ export default class Home extends Component {
         >
           Menu
         </div>
+        <header>Welcome to the Survey Central</header>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
           <Login handleInput={this.handleInput} handleLoginModal={this.handleLoginModal}/>
         </div>
