@@ -13,6 +13,7 @@
     height: 25rem;
     width: 30em;
     background: $lightFontColor;
+    border-radius: 2rem;
     padding-top: 3rem;
     display: flex;
     flex-direction: column;
@@ -40,9 +41,19 @@
       letter-spacing: 0.1rem;
       &:focus {
         outline: none;
-        
       }
     }
-    
+    .conf-button {
+      margin: 0 auto;
+      border: 1px solid $orange;
+      border-radius: 0.5rem;
+      padding: 0.5rem;
+      transition: 0.4s;
+      &:hover {
+        background: $orange;
+        color: $lightFontColor;
+        cursor: pointer;
+      }
+    }
   }
 }
