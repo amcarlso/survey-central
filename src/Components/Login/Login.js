@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './Login.scss';
+import axios from 'axios';
 
 export default class Login extends Component {
   constructor(props) {
@@ -10,6 +11,11 @@ export default class Login extends Component {
       password: ''
     }
   }
+
+  handleInput = (prop, e) => {
+    this.setState({[prop]: e.target.value})
+  }
+
   render() {
     return (
       <div className='modal'>
@@ -17,11 +23,11 @@ export default class Login extends Component {
           <div className='cancel-menu' onClick={() => this.props.handleLoginModal()}>X</div>
           <div className='each-input'>
             <p>Email: </p>
-            <input  type='text' onChange={(e) => this.props.handleInput('email', e)}/>
+            <input  type='text' onChange={(e) => this.handleInput('email', e)}/>
           </div>
           <div className='each-input'>
             <p>Password: </p>
-            <input  type='password' onChange={(e) => this.props.handleInput('password', e)}/>
+            <input  type='password' onChange={(e) => this.handleInput('password', e)}/>
           </div>
         </div>
       </div>

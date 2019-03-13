@@ -24,9 +24,15 @@
       position: absolute;
       top: 10px;
       right: 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
     .menu-options {
       margin: 20px 0;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   .menu-hide {
@@ -47,14 +53,18 @@
     justify-content: center;
     align-items: center;
     background: $background;
+    opacity: 0.8;
     color: $lightFontColor;
-    transition: 1.2s;
+    transition: 0.7s;
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
   }
   .menu-button-hide {
     margin-right: -70px;
   }
   .menu-button-show {
-    transition-delay: 1.2s;
     margin-right: 0px; 
   }
   .modal-parent {

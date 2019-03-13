@@ -15,9 +15,7 @@ export default class Home extends Component {
     }
   }
 
-  handleInput = (prop, e) => {
-    this.setState({[prop]: e.target.value})
-  }
+  
 
   handleMenuToggle = () => {
     this.setState({menuShow: !this.state.menuShow})
