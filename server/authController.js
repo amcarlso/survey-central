@@ -16,5 +16,10 @@ module.exports = {
       email: newUserArray[0].email
     }
     res.status(200).send({user: req.session.user})
-  }
+  },
+  // login: async (req, res) {
+  //   const db = req.app.get('db');
+  //   const { email, password } = req.body;
+
+  // }
 }

@@ -1,0 +1,13 @@
+@import '../../sassVars.scss';
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  font-family: $mainFont;
+  color: $lightFontColor;
+  background: $orange;
+  font-size: 4rem;
+  padding-top: 2rem;
+  min-height: 100vh;
+  width: 100vw;
+}

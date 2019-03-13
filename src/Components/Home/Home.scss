@@ -15,7 +15,7 @@
     height: 100vh;
     width: 300px;
     right: 0;
-    background: $background;
+    background: $orange;
     transition: 0.7s;
     z-index: 2;
     color: $lightFontColor;
@@ -52,7 +52,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: $background;
+    background: $orange;
     opacity: 0.8;
     color: $lightFontColor;
     transition: 0.7s;
@@ -72,7 +72,7 @@
     height: 100vh;
     width: 100vw;
     transition: 1.2s;
-    background: $background;
+    background: $orange;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Register.scss';
 import axios from 'axios';
 import { withRouter } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 class Register extends Component {
   constructor(props) {
@@ -16,6 +17,14 @@ class Register extends Component {
   register = async () => {
     console.log(this.props);
     const { name, email, password } = this.state;
+    if (name === '' || email === '' || password === '') {
+      return Swal.fire({
+        type: 'error',
+        title: 'Oops...',
+        text: 'You must fill out all areas!',
+        timer: 1500
+      })
+    }
     let res = await axios.post('/auth/register', {name, email, password});
     if (res.data.message) {
       return console.log(res.data.message);
@@ -46,7 +55,7 @@ class Register extends Component {
             <p>Password: </p>
             <input  type='password' onChange={(e) => this.handleInput('password', e)}/>
           </div>
-          <div onClick={() => this.register()}>Register</div>
+          <div className='register-button' onClick={() => this.register()}>Register</div>
         </div>
       </div>
     )
