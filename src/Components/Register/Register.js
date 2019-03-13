@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './Register.scss';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
-export default class Register extends Component {
+class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,10 +14,15 @@ export default class Register extends Component {
   }
 
   register = async () => {
-    console.log(this.state);
+    console.log(this.props);
     const { name, email, password } = this.state;
-    const res = await axios.post('/auth/register', {name, email, password});
-    console.log(res.data);
+    let res = await axios.post('/auth/register', {name, email, password});
+    if (res.data.message) {
+      return console.log(res.data.message);
+    } else if (res.data.user) {
+      this.setState({name: '', email: '', password: ''});
+      this.props.history.push('/dashboard');
+    }
   }
 
   handleInput = (prop, e) => {
@@ -46,3 +52,5 @@ export default class Register extends Component {
     )
   }
 }
+
+export default withRouter(Register);
