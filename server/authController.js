@@ -4,6 +4,7 @@ module.exports = {
     const db = req.app.get('db');
     const { name, email, password } = req.body;
     const checkEmail = await db.check_email({email: email}); // checking to see if email is already in use
+    console.log(checkEmail);
     if (checkEmail.length >= 1) {
       return res.status(200).send({message: 'Email Already In Use'});
     }
@@ -17,9 +18,25 @@ module.exports = {
     }
     res.status(200).send({user: req.session.user})
   },
-  // login: async (req, res) {
-  //   const db = req.app.get('db');
-  //   const { email, password } = req.body;
-
-  // }
+  login: async (req, res) => {
+    const db = req.app.get('db');
+    const { email, password } = req.body;
+    const checkEmail = await db.check_email({email: email});
+    console.log(checkEmail);
+    if(checkEmail.length === 0) {
+      return res.status(200).send({message: 'Email Not Found'})
+    } else {
+      const result = bcrypt.compareSync(password, checkEmail[0].hash)
+      if (!result) {
+        return res.status(401).send({message: 'Password Incorrect'})
+      } else {
+        req.session.user = {
+          id: checkEmail[0].user_id,
+          name: checkEmail[0].name,
+          email: checkEmail[0].email
+        }
+        res.status(200).send({user: req.session.user})
+      }
+    }
+  }
 }

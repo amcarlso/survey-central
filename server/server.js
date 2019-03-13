@@ -25,4 +25,5 @@ massive(CONNECTION_STRING).then( db => {   // connecting to the db
 })
 
 //auth endpoints
-app.post('/auth/register', ac.register)
+app.post('/auth/register', ac.register);
+app.post('/auth/login', ac.login);
