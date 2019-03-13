@@ -5,7 +5,6 @@ import routes from './routes';
 class App extends Component {
   
   render() {
-    console.log(this.state);
     return (
       <div>
         {routes}

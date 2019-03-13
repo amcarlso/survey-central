@@ -21,7 +21,7 @@ export default class Login extends Component {
           </div>
           <div className='each-input'>
             <p>Password: </p>
-            <input  type='text' onChange={(e) => this.props.handleInput('password', e)}/>
+            <input  type='password' onChange={(e) => this.props.handleInput('password', e)}/>
           </div>
         </div>
       </div>

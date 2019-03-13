@@ -17,15 +17,15 @@ export default class Register extends Component {
           <div className='cancel-menu' onClick={() => this.props.handleRegisterModal()}>X</div>
           <div className='each-input'>
             <p>Name: </p>
-            <input  type='text' onChange={(e) => this.handleInput('name', e)}/>
+            <input  type='text' onChange={(e) => this.props.handleInput('name', e)}/>
           </div>
           <div className='each-input'>
             <p>Email: </p>
-            <input  type='text' onChange={(e) => this.handleInput('email', e)}/>
+            <input  type='text' onChange={(e) => this.props.handleInput('email', e)}/>
           </div>
           <div className='each-input'>
             <p>Password: </p>
-            <input  type='text' onChange={(e) => this.handleInput('password', e)}/>
+            <input  type='password' onChange={(e) => this.props.handleInput('password', e)}/>
           </div>
         </div>
       </div>

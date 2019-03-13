@@ -1,6 +1,7 @@
 @import '../../sassVars.scss';
 .home {
   font-family: $mainFont;
+  letter-spacing: 0.1rem;
   font-weight: 600;
   position: relative;
   width: 100vw;
@@ -18,9 +19,14 @@
     transition: 0.7s;
     z-index: 2;
     color: $lightFontColor;
+    padding: 20px;
     .cancel-menu {
-      top: 5px;
-      margin-right: 5px;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+    .menu-options {
+      margin: 20px 0;
     }
   }
   .menu-hide {
@@ -34,9 +40,9 @@
     position: absolute;
     top: 20px;
     right: 20px;
-    height: 40px;
-    width: 40px;
-    border-radius: 20px;
+    height: 46px;
+    width: 46px;
+    border-radius: 23px;
     display: flex;
     justify-content: center;
     align-items: center;
