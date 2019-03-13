@@ -48,12 +48,13 @@
     align-items: center;
     background: $background;
     color: $lightFontColor;
-    transition: 0.7s;
+    transition: 1.2s;
   }
   .menu-button-hide {
     margin-right: -70px;
   }
   .menu-button-show {
+    transition-delay: 1.2s;
     margin-right: 0px; 
   }
   .modal-parent {
