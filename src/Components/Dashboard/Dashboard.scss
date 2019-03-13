@@ -6,8 +6,28 @@
   font-family: $mainFont;
   color: $lightFontColor;
   background: $orange;
-  font-size: 4rem;
-  padding-top: 2rem;
   min-height: 100vh;
   width: 100vw;
+  header {
+    font-size: 4rem;
+    padding-top: 2rem;
+  }
+  .logout-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: 1px solid $lightFontColor;
+    border-radius: 20px;
+    height: 40px;
+    width: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s;
+    &:hover {
+      cursor: pointer;
+      background: $lightFontColor;
+      color: $orange;
+    }
+  }
 }

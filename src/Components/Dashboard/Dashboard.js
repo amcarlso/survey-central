@@ -4,7 +4,8 @@ import './Dashboard.scss';
 export default function Dashboard(props) {
   return (
     <div className='dashboard'>
-      Dashboard
+      <header>Dashboard</header>
+      <div className='logout-button'>Logout</div>
     </div>
   )
 }
