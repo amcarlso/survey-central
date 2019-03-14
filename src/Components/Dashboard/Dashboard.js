@@ -1,10 +1,16 @@
 import React from 'react';
 import './Dashboard.scss';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { logoutUser } from '../../ducks/reducer';
 
-export default function Dashboard(props) {
+
+function Dashboard(props) {
   const logout = async () => {
-    await axios.get('/auth/logout');
+    await axios.post('/auth/logout');
+    props.history.push('/');
+    props.logoutUser();
+
   }
 
   return (
@@ -14,3 +20,9 @@ export default function Dashboard(props) {
     </div>
   )
 }
+
+const mapStateToProps = store => {
+  return { store };
+};
+
+export default connect(mapStateToProps, { logoutUser })(Dashboard);
