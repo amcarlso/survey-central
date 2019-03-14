@@ -64,7 +64,7 @@ export default class Home extends Component {
         >
           Menu
         </div>
-        <header>Welcome to the Survey Central</header>
+        <header>Welcome to Survey Central</header>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
           <Login handleInput={this.handleInput} handleLoginModal={this.handleLoginModal}/>
         </div>
