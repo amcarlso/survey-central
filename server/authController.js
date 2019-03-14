@@ -38,5 +38,9 @@ module.exports = {
         res.status(200).send({user: req.session.user})
       }
     }
+  },
+  logout: (req, res) => {
+    req.session.destroy();
+    res.redirect('http://localhost:3000/#/');
   }
 }

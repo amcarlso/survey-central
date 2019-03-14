@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import './modals.scss';
 import axios from 'axios';
-import Swal from 'sweetalert2';
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateUser } from '../../ducks/reducer';
+import Swal from 'sweetalert2';
 
 class Login extends Component {
   constructor(props) {
@@ -25,13 +27,14 @@ class Login extends Component {
       return Swal.fire({
         type: 'error',
         title: 'Oops...',
-        text: 'You must fill out all areas!',
+        text: 'You must fill out all fields!',
         timer: 1500
       })
     }
     if (res.data.message) {
       return console.log(res.data.message);
     } else if (res.data.user) {
+      await this.props.updateUser(res.data.user);
       this.setState({name: '', email: '', password: ''});
       this.props.history.push('/dashboard');
     }
@@ -57,4 +60,8 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+const mapStateToProps = store => {
+  return { store };
+};
+ 
+export default connect(mapStateToProps, {updateUser})(withRouter(Login));
