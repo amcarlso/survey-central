@@ -27,6 +27,14 @@ class Register extends Component {
         timer: 1500
       })
     }
+    if (!password.includes('@') || !password.includes('.')) {
+      return Swal.fire({
+        type: 'error',
+        title: 'Please Enter a Valid Email Address',
+        timer: 1500,
+        showConfirmButton: false
+      })
+    }
     let res = await axios.post('/auth/register', {name, email, password});
     if (res.data.message) {
       return console.log(res.data.message);
