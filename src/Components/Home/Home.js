@@ -5,6 +5,8 @@ import Login from '../Auth/Login';
 import survey from '../Home/survey.png';
 import survey2 from '../Home/survey2.png';
 
+import { Link } from 'react-router-dom';
+
 export default class Home extends Component {
 
   constructor(props) {
@@ -72,11 +74,11 @@ export default class Home extends Component {
         <div className='body-containers'>
           <div>
             <img src={survey} alt='survey'/>
-            <p>take surveys</p>
+            <Link to='/surveys'><p>take surveys</p></Link>
           </div>
           <div>
           <img src={survey2} alt='survey'/>
-            <p>Make Surveys</p>
+            <p onClick={() => this.handleRegisterModal()}>Make Surveys</p>
           </div>
         </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>

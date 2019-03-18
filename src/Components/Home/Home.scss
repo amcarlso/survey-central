@@ -11,7 +11,7 @@
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
-  background: $lightFontColor;
+  background: white;
   color: $orange;
   header {
     margin-top: 3.2rem;
@@ -28,9 +28,19 @@
       padding-top: 1rem;
       border: 4px solid $orange;
       border-radius: 2rem;
-      > p {
+      a {
+        text-decoration: none;
+        color: $orange;
         padding-top: 1rem;
         font-size: 2rem;
+      }
+      p {
+        padding-top: 1rem;
+        font-size: 2rem;
+        &:hover {
+          text-decoration: underline;
+          cursor: pointer;
+        }
       }
     }
   }
