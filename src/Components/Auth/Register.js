@@ -44,10 +44,18 @@ class Register extends Component {
   handleKeyDown = (evt) => {
     if (evt.keyCode === 13) {
       this.register();
+    } else if (evt.keyCode === 27) {
+      this.setState({
+        name: '',
+        email: '',
+        password: ''
+      })
+      this.props.handleRegisterModal();
     }
   }
 
   render() {
+    const { name, email, password } = this.state;
     return (
       <div className='modal'>
         <div className='input-container'>
@@ -56,6 +64,7 @@ class Register extends Component {
             <p>Name: </p>
             <input  
               id='register-input'
+              value={name}
               type='text' 
               onKeyDown={(e) => this.handleKeyDown(e)}
               onChange={(e) => this.handleInput('name', e)}
@@ -64,6 +73,7 @@ class Register extends Component {
           <div className='each-input'>
             <p>Email: </p>
             <input  
+              value={email}
               type='text' 
               onKeyDown={(e) => this.handleKeyDown(e)}
               onChange={(e) => this.handleInput('email', e)}
@@ -73,6 +83,7 @@ class Register extends Component {
             <p>Password: </p>
             <input  
               type='password' 
+              value={password}
               onKeyDown={(e) => this.handleKeyDown(e)}
               onChange={(e) => this.handleInput('password', e)}
             />

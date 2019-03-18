@@ -19,6 +19,12 @@ class Login extends Component {
   handleKeyDown = (evt) => {
     if(evt.keyCode === 13) {
       this.login();
+    } else if (evt.keyCode === 27) {
+      this.setState({
+        email: '',
+        password: ''
+      });
+      this.props.handleLoginModal();
     }
   }
 
@@ -47,6 +53,7 @@ class Login extends Component {
   }
 
   render() {
+    const { email, password } = this.state;
     return (
       <div className='modal'>
         <div className='input-container'>
@@ -54,7 +61,8 @@ class Login extends Component {
           <div className='each-input'>
             <p>Email: </p>
             <input 
-              id='login-input'  
+              id='login-input' 
+              value={email} 
               type='text' 
               onKeyDown={(e) => this.handleKeyDown(e)}
               onChange={(e) => this.handleInput('email', e)}
@@ -63,7 +71,8 @@ class Login extends Component {
           <div className='each-input'>
             <p>Password: </p>
             <input  
-              type='password' 
+              value={password}
+              type='password'
               onKeyDown={(e) => this.handleKeyDown(e)}
               onChange={(e) => this.handleInput('password', e)}
             />
