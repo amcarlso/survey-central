@@ -68,6 +68,7 @@ class Register extends Component {
       <div className='modal'>
         <div className='input-container'>
           <div className='cancel-menu' onClick={() => this.props.handleRegisterModal()}>X</div>
+          <span>Register</span>
           <div className='each-input'>
             <p>Name: </p>
             <input  

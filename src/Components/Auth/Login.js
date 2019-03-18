@@ -58,6 +58,7 @@ class Login extends Component {
       <div className='modal'>
         <div className='input-container'>
           <div className='cancel-menu' onClick={() => this.props.handleLoginModal()}>X</div>
+          <span>Login</span>
           <div className='each-input'>
             <p>Email: </p>
             <input 

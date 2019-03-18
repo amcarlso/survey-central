@@ -5,8 +5,6 @@ import Login from '../Auth/Login';
 import survey from '../Home/survey.png';
 import survey2 from '../Home/survey2.png';
 
-import { Link } from 'react-router-dom';
-
 export default class Home extends Component {
 
   constructor(props) {
@@ -54,7 +52,9 @@ export default class Home extends Component {
               this.handleMenuToggle();
             }
           }
-          >Login</div>
+          >
+            Login
+          </div>
           <div 
             className='menu-options'
             onClick={() => {
@@ -62,7 +62,11 @@ export default class Home extends Component {
               this.handleMenuToggle();
             }
           }
-          >Register</div>
+          >
+            Register
+          </div>
+          <div onClick={() => this.props.history.push('/surveys')} className='menu-options'>Surveys</div>
+          <div className='menu-options'>About Survey Central</div>
         </div>
         <div 
           className={menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
@@ -74,11 +78,11 @@ export default class Home extends Component {
         <div className='body-containers'>
           <div>
             <img src={survey} alt='survey'/>
-            <Link to='/surveys'><p>take surveys</p></Link>
+            <span onClick={() => this.props.history.push('/surveys')}>take surveys</span>
           </div>
           <div>
           <img src={survey2} alt='survey'/>
-            <p onClick={() => this.handleRegisterModal()}>Make Surveys</p>
+            <span onClick={() => this.handleRegisterModal()}>Make Surveys</span>
           </div>
         </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
