@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import './Home.scss';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
+import survey from '../Home/survey.png';
+import survey2 from '../Home/survey2.png';
 
 export default class Home extends Component {
 
@@ -65,6 +67,16 @@ export default class Home extends Component {
           Menu
         </div>
         <header>Welcome to Survey Central</header>
+        <div className='body-containers'>
+          <div>
+            <img src={survey} alt='survey'/>
+            <p>take surveys</p>
+          </div>
+          <div>
+          <img src={survey2} alt='survey'/>
+            <p>Make Surveys</p>
+          </div>
+        </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
           <Login handleInput={this.handleInput} handleLoginModal={this.handleLoginModal}/>
         </div>

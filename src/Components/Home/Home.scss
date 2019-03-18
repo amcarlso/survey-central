@@ -7,17 +7,31 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   overflow: hidden;
   background: $lightFontColor;
+  color: $orange;
   header {
-    color: $blue;
-    transition: 1.5s;
-    border-bottom: 4px solid $orange;
-    &:hover {
-      color: $orange;
-      border-bottom: 4px solid $blue;
+    margin-top: 3.2rem;
+  }
+  .body-containers {
+    display: flex;
+    div {
+      position: relative;
+      height: 550px;
+      width: calc((100vw / 2) - 2rem);
+      border: 1px solid $orange;
+      margin: 1rem;
+      text-align: center;
+      padding-top: 1rem;
+      border: 4px solid $orange;
+      border-radius: 2rem;
+      > p {
+        padding-top: 1rem;
+        font-size: 2rem;
+      }
     }
   }
   .menu {
@@ -104,4 +118,3 @@
     font-size: 3rem;
   }
 }
-
