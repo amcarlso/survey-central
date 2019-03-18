@@ -41,6 +41,12 @@ class Register extends Component {
     this.setState({[prop]: e.target.value})
   }
 
+  handleKeyDown = (evt) => {
+    if (evt.keyCode === 13) {
+      this.register();
+    }
+  }
+
   render() {
     return (
       <div className='modal'>
@@ -48,15 +54,28 @@ class Register extends Component {
           <div className='cancel-menu' onClick={() => this.props.handleRegisterModal()}>X</div>
           <div className='each-input'>
             <p>Name: </p>
-            <input  type='text' onChange={(e) => this.handleInput('name', e)}/>
+            <input  
+              id='register-input'
+              type='text' 
+              onKeyDown={(e) => this.handleKeyDown(e)}
+              onChange={(e) => this.handleInput('name', e)}
+            />
           </div>
           <div className='each-input'>
             <p>Email: </p>
-            <input  type='text' onChange={(e) => this.handleInput('email', e)}/>
+            <input  
+              type='text' 
+              onKeyDown={(e) => this.handleKeyDown(e)}
+              onChange={(e) => this.handleInput('email', e)}
+            />
           </div>
           <div className='each-input'>
             <p>Password: </p>
-            <input  type='password' onChange={(e) => this.handleInput('password', e)}/>
+            <input  
+              type='password' 
+              onKeyDown={(e) => this.handleKeyDown(e)}
+              onChange={(e) => this.handleInput('password', e)}
+            />
           </div>
           <div className='conf-button' onClick={() => this.register()}>Register</div>
         </div>

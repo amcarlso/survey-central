@@ -28,6 +28,7 @@ export default class Home extends Component {
       login: !this.state.login,
       register: false
     })
+    document.getElementById('login-input').focus();
   }
 
   handleRegisterModal = () => {
@@ -35,6 +36,7 @@ export default class Home extends Component {
       register: !this.state.register,
       login: false
     })
+    document.getElementById('register-input').focus();
   }
 
   render() {

@@ -4,7 +4,6 @@ module.exports = {
     const db = req.app.get('db');
     const { name, email, password } = req.body;
     const checkEmail = await db.check_email({email: email}); // checking to see if email is already in use
-    console.log(checkEmail);
     if (checkEmail.length >= 1) {
       return res.status(200).send({message: 'Email Already In Use'});
     }
@@ -22,7 +21,6 @@ module.exports = {
     const db = req.app.get('db');
     const { email, password } = req.body;
     const checkEmail = await db.check_email({email: email});
-    console.log(checkEmail);
     if(checkEmail.length === 0) {
       return res.status(200).send({message: 'Email Not Found'})
     } else {

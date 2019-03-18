@@ -16,6 +16,12 @@ class Login extends Component {
     }
   }
 
+  handleKeyDown = (evt) => {
+    if(evt.keyCode === 13) {
+      this.login();
+    }
+  }
+
   handleInput = (prop, e) => {
     this.setState({[prop]: e.target.value})
   }
@@ -47,11 +53,20 @@ class Login extends Component {
           <div className='cancel-menu' onClick={() => this.props.handleLoginModal()}>X</div>
           <div className='each-input'>
             <p>Email: </p>
-            <input  type='text' onChange={(e) => this.handleInput('email', e)}/>
+            <input 
+              id='login-input'  
+              type='text' 
+              onKeyDown={(e) => this.handleKeyDown(e)}
+              onChange={(e) => this.handleInput('email', e)}
+            />
           </div>
           <div className='each-input'>
             <p>Password: </p>
-            <input  type='password' onChange={(e) => this.handleInput('password', e)}/>
+            <input  
+              type='password' 
+              onKeyDown={(e) => this.handleKeyDown(e)}
+              onChange={(e) => this.handleInput('password', e)}
+            />
           </div>
           <div className='conf-button' onClick={() => this.login()}>Login</div>
         </div>
