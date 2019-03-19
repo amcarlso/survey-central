@@ -79,6 +79,7 @@ class Login extends Component {
             />
           </div>
           <div className='conf-button' onClick={() => this.login()}>Login</div>
+          <span onClick={() => this.props.handleRegisterModal()} className='to-other-modal'>Don't Have an Account?</span>
         </div>
       </div>
     )

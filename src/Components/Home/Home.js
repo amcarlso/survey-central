@@ -66,7 +66,7 @@ export default class Home extends Component {
             Register
           </div>
           <div onClick={() => this.props.history.push('/surveys')} className='menu-options'>Surveys</div>
-          <div className='menu-options'>About Survey Central</div>
+          <div onClick={() => this.props.history.push('/about')} className='menu-options'>About Survey Central</div>
         </div>
         <div 
           className={menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
@@ -78,7 +78,7 @@ export default class Home extends Component {
         <div className='body-containers'>
           <div>
             <img src={survey} alt='survey'/>
-            <span onClick={() => this.props.history.push('/surveys')}>take surveys</span>
+            <span onClick={() => this.props.history.push('/surveys')}>Take Surveys</span>
           </div>
           <div>
           <img src={survey2} alt='survey'/>
@@ -86,10 +86,10 @@ export default class Home extends Component {
           </div>
         </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Login handleInput={this.handleInput} handleLoginModal={this.handleLoginModal}/>
+          <Login handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
         </div>
         <div className={register ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Register handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal}/>
+          <Register handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
         </div>
       </div>
     )
