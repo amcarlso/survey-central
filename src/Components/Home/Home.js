@@ -82,7 +82,7 @@ export default class Home extends Component {
           </div>
           <div>
           <img src={survey2} alt='survey'/>
-            <span onClick={() => this.handleRegisterModal()}>Make Surveys</span>
+            <span onClick={() => this.handleLoginModal()}>Make Surveys</span>
           </div>
         </div>
         <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
