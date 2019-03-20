@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './Surveys.scss'
 
 export default class Surveys extends Component {
   constructor(props) {
@@ -8,7 +9,14 @@ export default class Surveys extends Component {
 
   render() {
     return (
-      <div>Surveys</div>
+      <div className='surveys-page'>
+        <div className='surveys-container'>
+          <header>Surveys</header>
+          <div>
+            
+          </div>
+        </div>
+      </div>
     )
   }
 }
