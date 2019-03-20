@@ -1,0 +1,53 @@
+@import '../../sassVars.scss';
+
+.new-survey-page {
+  font-family: $mainFont;
+  min-height: 100vh;
+  .survey-input-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $lightFontColor;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    height: auto;
+    width: 500px;
+    background: $orange;
+    > div {
+      padding: 0.4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      input {
+        width: 300px;
+        margin: 0 1rem;
+        background: transparent;
+        font-size: 1rem;
+        color: $lightFontColor;
+        border: none;
+        border-bottom: 1px solid $lightFontColor;
+        &::placeholder {
+          color: $lightFontColor;
+        }
+        &:hover {
+          background: rgba($orange, 0.8)
+        } 
+        &:focus {
+          outline: none;
+        }
+      }
+      .save-button {
+        border: 1px solid $lightFontColor;
+        border-radius: 0.6rem;
+        padding: 0.3rem;
+
+      }
+    }
+  }
+  .survey-info {
+    margin: 0 auto;
+    width: 80vw;
+    min-height: 100px;
+    border: 1px solid black;
+  }
+}

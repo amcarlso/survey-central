@@ -1,8 +1,7 @@
 @import '../../sassVars.scss';
 
 .dashboard {
-  display: flex;
-  justify-content: center;
+  position: relative;
   font-family: $mainFont;
   color: $lightFontColor;
   background: $orange;
@@ -10,25 +9,35 @@
   width: 100vw;
   cursor: context-menu;
   header {
+    text-align: center;
     font-size: 4rem;
     padding-top: 2rem;
   }
-  .logout-button {
+  .menu-container {
     position: absolute;
     top: 15px;
     right: 15px;
-    border: 1px solid $lightFontColor;
-    border-radius: 20px;
-    height: 40px;
-    width: 70px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: 0.2s;
-    &:hover {
-      cursor: pointer;
-      background: $lightFontColor;
-      color: $orange;
+    span {
+      
+      font-size: 1.2rem;
+    }
+    .logout-button {
+      border: 1px solid $lightFontColor;
+      border-radius: 20px;
+      height: 40px;
+      width: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 0.2s;
+      margin-left: 0.5rem;
+      &:hover {
+        cursor: pointer;
+        background: $lightFontColor;
+        color: $orange;
+      }
     }
   }
 }

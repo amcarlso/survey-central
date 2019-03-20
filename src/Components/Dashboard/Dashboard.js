@@ -11,16 +11,17 @@ class Dashboard extends Component {
 
   }
   componentDidMount = () => {
-    if (!this.props.store.user.name) {  //if not logged in, push user to home page
-      Swal.fire({
-        type: 'error',
-        title: 'You must login to see this page',
-        showConfirmButton: false,
-        timer: 1500
-      })
-      this.props.history.push('/');
-    }
+    // if (!this.props.store.user.name) {  //if not logged in, push user to home page
+    //   Swal.fire({
+    //     type: 'error',
+    //     title: 'You must login to see this page',
+    //     showConfirmButton: false,
+    //     timer: 1500
+    //   })
+    //   this.props.history.push('/');
+    // }
   }
+
   logout = async () => {
     await axios.post('/auth/logout');
     this.props.history.push('/');
@@ -30,13 +31,17 @@ class Dashboard extends Component {
   render() {
     return (
       <div className='dashboard'>
-        <header>Dashboard</header>
-        <div className='logout-button' onClick={() => this.logout()}>Logout</div>
+        <header className='header'>Dashboard</header>
+        <div className='menu-container'>
+          <span>Welcome, {this.props.store.user.name}</span>
+          <div className='logout-button' onClick={() => this.logout()}>Logout</div>
+        </div>
+        <div onClick={() => this.props.history.push('/new')}>New Survey</div>
       </div>
     )
   }
 }
-
+ 
 const mapStateToProps = store => {
   return { store };
 };
