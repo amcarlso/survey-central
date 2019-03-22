@@ -25,5 +25,11 @@ module.exports = {
       },
       options: options
   })
+  },
+  getAllSurveys: async (req, res) => {
+    const db = req.app.get('db');
+    const surveys = await db.get_surveys();
+    console.log(surveys)
+    res.status(200).send({surveys: surveys})
   }
 }

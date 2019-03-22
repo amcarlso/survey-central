@@ -30,3 +30,4 @@ app.post('/auth/register', ac.register);
 app.post('/auth/login', ac.login);
 app.post('/auth/logout', ac.logout);
 app.post('/api/questions', mc.addQuestion);
+app.get('/api/surveys', mc.getAllSurveys)
