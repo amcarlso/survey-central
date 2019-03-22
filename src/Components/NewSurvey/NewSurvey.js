@@ -14,7 +14,8 @@ export default class NewSurvey extends Component {
       questionNameChosen: false,
       optionInput: '',
       options: [],
-      questionName: ''
+      questionName: '',
+      surveyId: null
     }
   }
 
@@ -49,19 +50,21 @@ export default class NewSurvey extends Component {
   }
 
   handleSaveQuestion = async () => {
-    const { surveyName, questionName, options} = this.state;
-    const res = await axios.post('/api/questions', {survey: surveyName, question: questionName, options: options});
-    if (res.data === 'I think it worked') {
+    const { surveyName, questionName, options, surveyId} = this.state;
+    const res = await axios.post('/api/questions', {survey: surveyName, question: questionName, options: options, surveyId: surveyId});
+    if (res.data) {
       this.setState({
-        questionName: '',
-        options: []
+        questionNameInput: '',
+        options: [],
+        surveyId: res.data.survey.surveyId
       })
     }
     console.log(res.data);
   }
   render() {
-    const { surveyName, surveyNameChosen, questionNameChosen, optionInput, questionNameInput } = this.state;
-
+    const { surveyName, surveyId, surveyNameChosen, questionNameChosen, optionInput, questionNameInput, questionName, options } = this.state;
+    console.log(surveyId)
+    // console.log(questionName, options)
     return (
       <div className='new-survey-page'>
         New Survey
