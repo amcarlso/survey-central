@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './NewSurvey.scss';
+// import Swal from 'sweetalert2';
 
 export default class NewSurvey extends Component {
   constructor(props) {
@@ -8,38 +9,46 @@ export default class NewSurvey extends Component {
     this.state = {
       surveyName: '',
       surveyNameChosen: false,
-      questionName: '',
+      questionNameInput: '',
       questionNameChosen: false,
-      option: '',
-      questions: {},
-      questionNumber: 1
+      optionInput: '',
+      options: [],
+      questionName: ''
     }
   }
 
-  handleInput = (prop, e) => {
-    this.setState({[prop]: e.target.value})
+  handleInput = (prop, e) => {   // updates input for surveyName, questionName, optionInput
+    this.setState({[prop]: e.target.value})   
   }
 
-  handleLock = () => {
-    this.setState({questionNameChosen: !this.state.questionNameChosen})
-    this.setState({questionName: ''})
-  }
-
-  handleSave = (prop) => {
+  handleSave = (prop) => { // locks the input into place in state
     this.setState({[prop]: !this.state[prop]});
   }
 
-  handleAddQName = () => {
-    const { surveyName, surveyNameChosen, questionName, questionNameChosen, option, questions, questionNumber } = this.state;
-    questions[questionNumber] = {name: questionName};
-    this.setState({questionNumber: this.state.questionNumber + 1});
-    console.log(questions)
-    console.log(this.state.questionNumber)
+  handleClearOptionInput = () => {
+    this.setState({
+      optionInput: ''
+    })
   }
 
+  handleAddQName = () => { // updates the questionName on state with questionNameInput
+    const {  questionNameInput } = this.state;
+    this.setState({
+      questionName: questionNameInput
+    });
+  }
+
+  handleAddOption = () => {   // updates the options array on state with optionInput
+    const { optionInput, options } = this.state;
+    console.log(options);
+    this.setState({
+      options: [...options, optionInput]
+    })
+    this.handleClearOptionInput();  // clears out the option input to allow user to enter another option in the question.
+  }
   render() {
-    const { surveyName, surveyNameChosen, questionName, questionNameChosen, option } = this.state;
-    console.log(this.state)
+    const { surveyName, surveyNameChosen, questionNameChosen, optionInput, questionNameInput } = this.state;
+
     return (
       <div className='new-survey-page'>
         New Survey
@@ -51,39 +60,46 @@ export default class NewSurvey extends Component {
                 value={surveyName} 
                 onChange={(e) => this.handleInput('surveyName', e)}
               />
-              <span 
+              <button 
+                disabled={surveyName === ''}
                 onClick={() => this.handleSave('surveyNameChosen')} 
-                className='save-button'>{!surveyNameChosen ? 'Save' : 'Saved'}
-              </span>
+                className='button'>{!surveyNameChosen ? 'Save' : 'Saved'}
+              </button>
           </div>
           <div>
               <span>Question:</span>
               <input 
                 disabled={!surveyNameChosen}
-                value={questionName} 
+                value={questionNameInput} 
                 type='text' 
-                onChange={(e) => this.handleInput('questionName', e)}
+                onChange={(e) => this.handleInput('questionNameInput', e)}
               />
-              <span 
+              <button 
+                disabled={questionNameInput === '' || !surveyNameChosen}
                 onClick={() =>  {
                   this.handleAddQName();
-                  this.handleLock();
+                  this.handleSave('questionNameChosen');
                 }} 
-                className='save-button'>{questionNameChosen ? 'Locked' : 'Unlocked'}
-              </span>
+                className='button'>{!questionNameChosen ? 'Save' : 'Saved'}
+              </button>
           </div>
           <div>
               <span>Option:</span>
               <input 
                 disabled={!questionNameChosen}
-                value={option}
+                value={optionInput}
                 type='text' 
-                onChange={(e) => this.handleInput('option', e)}
+                onChange={(e) => this.handleInput('optionInput', e)}
               />
-              <span className='save-button'>Save</span>
+              <button onClick={() => this.handleAddOption()} className='button'>Save</button>
+          </div>
+          <div>
+            <div className='button'>Next Question</div>
+            <div className='button'>Save Survey</div>
           </div>
         </div>
-        
+
+
       </div>
     )
   }

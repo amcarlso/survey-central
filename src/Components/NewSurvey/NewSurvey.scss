@@ -26,9 +26,6 @@
         color: $lightFontColor;
         border: none;
         border-bottom: 1px solid $lightFontColor;
-        &::placeholder {
-          color: $lightFontColor;
-        }
         &:hover {
           background: rgba($orange, 0.8)
         } 
@@ -36,11 +33,13 @@
           outline: none;
         }
       }
-      .save-button {
+      .button {
         border: 1px solid $lightFontColor;
         border-radius: 0.6rem;
         padding: 0.3rem;
         transition: 0.5s;
+        background: transparent;
+        color: $lightFontColor;
         &:hover {
           cursor: pointer;
           background: $lightFontColor;
