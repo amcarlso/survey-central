@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './NewSurvey.scss';
 // import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default class NewSurvey extends Component {
   constructor(props) {
@@ -45,6 +46,18 @@ export default class NewSurvey extends Component {
       options: [...options, optionInput]
     })
     this.handleClearOptionInput();  // clears out the option input to allow user to enter another option in the question.
+  }
+
+  handleSaveQuestion = async () => {
+    const { surveyName, questionName, options} = this.state;
+    const res = await axios.post('/api/questions', {survey: surveyName, question: questionName, options: options});
+    if (res.data === 'I think it worked') {
+      this.setState({
+        questionName: '',
+        options: []
+      })
+    }
+    console.log(res.data);
   }
   render() {
     const { surveyName, surveyNameChosen, questionNameChosen, optionInput, questionNameInput } = this.state;
@@ -94,7 +107,7 @@ export default class NewSurvey extends Component {
               <button onClick={() => this.handleAddOption()} className='button'>Save</button>
           </div>
           <div>
-            <div className='button'>Next Question</div>
+            <div onClick={() => this.handleSaveQuestion()} className='button'>Next Question</div>
             <div className='button'>Save Survey</div>
           </div>
         </div>

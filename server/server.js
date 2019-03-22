@@ -3,6 +3,7 @@ require('dotenv').config();
 const massive = require('massive');
 const session = require('express-session');
 const ac = require('./authController');
+const mc = require('./mainController');
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env;
 
 const app = express();
@@ -27,4 +28,5 @@ massive(CONNECTION_STRING).then( db => {   // connecting to the db
 //auth endpoints
 app.post('/auth/register', ac.register);
 app.post('/auth/login', ac.login);
-app.post('/auth/logout', ac.logout)
+app.post('/auth/logout', ac.logout);
+app.post('/api/questions', mc.addQuestion);
