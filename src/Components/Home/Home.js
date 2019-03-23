@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import './Home.scss';
 import Register from '../Auth/Register';
 import Login from '../Auth/Login';
+import Menu from '../Menu/Menu';
 import survey from '../Home/survey.png';
 import survey2 from '../Home/survey2.png';
+import { connect } from 'react-redux';
 
-export default class Home extends Component {
+
+
+class Home extends Component {
 
   constructor(props) {
     super(props);
@@ -40,40 +44,17 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.props);
     const { menuShow, login, register } = this.state;
     return (
       <div className="home">
-        <div className={menuShow ? 'menu menu-show' : 'menu menu-hide'}>
-          <div className='cancel-menu' onClick={() => this.handleMenuToggle()}>X</div>
-          <div 
-            className='menu-options'
-            onClick={() => {
-              this.handleLoginModal();
-              this.handleMenuToggle();
-            }
-          }
-          >
-            Login
-          </div>
-          <div 
-            className='menu-options'
-            onClick={() => {
-              this.handleRegisterModal();
-              this.handleMenuToggle();
-            }
-          }
-          >
-            Register
-          </div>
-          <div onClick={() => this.props.history.push('/surveys')} className='menu-options'>Surveys</div>
-          <div onClick={() => this.props.history.push('/about')} className='menu-options'>About Survey Central</div>
-        </div>
-        <div 
-          className={menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
-          onClick={() => this.handleMenuToggle()}
-        >
-          Menu
-        </div>
+
+        <Menu 
+          menuShow={menuShow} 
+          handleMenuToggle={this.handleMenuToggle}
+          handleLoginModal={this.handleLoginModal}
+          handleRegisterModal={this.handleRegisterModal}
+        />
         <header>Welcome to Survey Central</header>
         <div className='body-containers'>
           <div>
@@ -95,3 +76,7 @@ export default class Home extends Component {
     )
   }
 }
+
+const mapStateToProps = store => store;
+
+export default connect(mapStateToProps)(Home)

@@ -63,7 +63,6 @@ export default class NewSurvey extends Component {
   }
   render() {
     const { surveyName, surveyId, surveyNameChosen, questionNameChosen, optionInput, questionNameInput, questionName, options } = this.state;
-    console.log(surveyId)
     // console.log(questionName, options)
     return (
       <div className='new-survey-page'>
