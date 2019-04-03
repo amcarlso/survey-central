@@ -39,7 +39,7 @@ export default class Surveys extends Component {
         <div className='surveys-container'>
           <header>Surveys</header>
           <Menu />
-            {surveyList}
+          {surveyList}
         </div>
       </div>
     )

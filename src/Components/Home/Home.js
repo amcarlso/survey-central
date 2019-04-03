@@ -17,15 +17,12 @@ class Home extends Component {
     this.state = {
       login: false,
       register: false,
-      menuShow: false
     }
   }
 
   
 
-  handleMenuToggle = () => {
-    this.setState({menuShow: !this.state.menuShow})
-  }
+  
 
   handleLoginModal = () => {
     this.setState({
@@ -49,8 +46,7 @@ class Home extends Component {
     return (
       <div className="home">
 
-        <Menu 
-          menuShow={menuShow} 
+        <Menu  
           handleMenuToggle={this.handleMenuToggle}
           handleLoginModal={this.handleLoginModal}
           handleRegisterModal={this.handleRegisterModal}

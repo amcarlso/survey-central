@@ -1,57 +1,70 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../ducks/reducer';
 import './Menu.scss';
 
-function Menu(props) {
-  console.log(props)
-  return (
-    <div>
-      <div className={props.menuShow ? 'menu menu-show' : 'menu menu-hide'}>
-        <div className='cancel-menu' onClick={() => props.handleMenuToggle()}>X</div>
-        {!props.user.name ? (
-          <div>
-            <div 
-              className='menu-options'
-              onClick={() => {
-                props.handleLoginModal();
-                props.handleMenuToggle();
-              }
-            }
-            >
-              Login
-            </div>
-            <div 
-              className='menu-options'
-              onClick={() => {
-                props.handleRegisterModal();
-                props.handleMenuToggle();
-              }
-            }
-            >
-              Register
-            </div>
-          </div>
-          ) : (
+class Menu extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      menuShow: false
+    }
+  }
+
+  handleMenuToggle = () => {
+    this.setState({menuShow: !this.state.menuShow})
+  }
+
+  render() {
+    return (
+      <div>
+        <div className={this.state.menuShow ? 'menu menu-show' : 'menu menu-hide'}>
+          <div className='cancel-menu' onClick={() => this.handleMenuToggle()}>X</div>
+          {!this.props.user.name ? (
             <div>
-              <div onClick={() => props.logoutUser()}>
-                Logout
+              <div 
+                className='menu-options'
+                onClick={() => {
+                  this.props.handleLoginModal();
+                  this.handleMenuToggle();
+                }
+              }
+              >
+                Login
+              </div>
+              <div 
+                className='menu-options'
+                onClick={() => {
+                  this.props.handleRegisterModal();
+                  this.handleMenuToggle();
+                }
+              }
+              >
+                Register
               </div>
             </div>
-          )
-        }
-        <div onClick={() => props.history.push('/surveys')} className='menu-options'>Surveys</div>
-        <div onClick={() => props.history.push('/about')} className='menu-options'>About Survey Central</div>
+            ) : (
+              <div>
+                <div onClick={() => this.props.logoutUser()}>
+                  Logout
+                </div>
+              </div>
+            )
+          }
+          <div onClick={() => this.props.history.push('/surveys')} className='menu-options'>Surveys</div>
+          <div onClick={() => this.props.history.push('/about')} className='menu-options'>About Survey Central</div>
+        </div>
+        <div 
+          className={this.state.menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
+          onClick={() => this.handleMenuToggle()}
+        >
+          Menu
+        </div>
       </div>
-      <div 
-        className={props.menuShow ? 'menu-button menu-button-hide' : 'menu-button menu-button-show'}
-        onClick={() => props.handleMenuToggle()}
-      >
-        Menu
-      </div>
-    </div>
-  )
+    )
+  }
 }
 
 const mapStateToProps = store => store;
