@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../ducks/reducer';
+import Register from '../Auth/Register';
+import Login from '../Auth/Login';
 import './Menu.scss';
 
 class Menu extends Component {
@@ -9,7 +11,9 @@ class Menu extends Component {
     super(props);
 
     this.state = {
-      menuShow: false
+      menuShow: false,
+      login: false,
+      register: false
     }
   }
 
@@ -17,9 +21,37 @@ class Menu extends Component {
     this.setState({menuShow: !this.state.menuShow})
   }
 
+  handleLoginModal = () => {
+    this.setState({
+      login: !this.state.login,
+      register: false
+    })
+    document.getElementById('login-input').focus();
+  }
+
+  handleRegisterModal = () => {
+    this.setState({
+      register: !this.state.register,
+      login: false
+    })
+    document.getElementById('register-input').focus();
+  }
+
+  handleLogout = () => {
+    this.props.logoutUser();
+    this.props.history.push('/');
+  }
+  
   render() {
+    const { login, register } = this.state;
     return (
       <div>
+        <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
+          <Login handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
+        </div>
+        <div className={register ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
+          <Register handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
+        </div>
         <div className={this.state.menuShow ? 'menu menu-show' : 'menu menu-hide'}>
           <div className='cancel-menu' onClick={() => this.handleMenuToggle()}>X</div>
           {!this.props.user.name ? (
@@ -27,7 +59,7 @@ class Menu extends Component {
               <div 
                 className='menu-options'
                 onClick={() => {
-                  this.props.handleLoginModal();
+                  this.handleLoginModal();
                   this.handleMenuToggle();
                 }
               }
@@ -37,7 +69,7 @@ class Menu extends Component {
               <div 
                 className='menu-options'
                 onClick={() => {
-                  this.props.handleRegisterModal();
+                  this.handleRegisterModal();
                   this.handleMenuToggle();
                 }
               }
@@ -47,7 +79,7 @@ class Menu extends Component {
             </div>
             ) : (
               <div>
-                <div onClick={() => this.props.logoutUser()}>
+                <div className='menu-options' onClick={() => this.handleLogout()}>
                   Logout
                 </div>
               </div>

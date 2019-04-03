@@ -24,21 +24,7 @@ class Home extends Component {
 
   
 
-  handleLoginModal = () => {
-    this.setState({
-      login: !this.state.login,
-      register: false
-    })
-    document.getElementById('login-input').focus();
-  }
 
-  handleRegisterModal = () => {
-    this.setState({
-      register: !this.state.register,
-      login: false
-    })
-    document.getElementById('register-input').focus();
-  }
 
   render() {
     console.log(this.props);
@@ -46,11 +32,7 @@ class Home extends Component {
     return (
       <div className="home">
 
-        <Menu  
-          handleMenuToggle={this.handleMenuToggle}
-          handleLoginModal={this.handleLoginModal}
-          handleRegisterModal={this.handleRegisterModal}
-        />
+        <Menu/>
         <header>Welcome to Survey Central</header>
         <div className='body-containers'>
           <div>
@@ -61,12 +43,6 @@ class Home extends Component {
           <img src={survey2} alt='survey'/>
             <span onClick={() => this.handleLoginModal()}>Make Surveys</span>
           </div>
-        </div>
-        <div className={login ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Login handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
-        </div>
-        <div className={register ? 'modal-parent modal-show' : 'modal-parent modal-hide'}>
-          <Register handleInput={this.handleInput} handleRegisterModal={this.handleRegisterModal} handleLoginModal={this.handleLoginModal}/>
         </div>
       </div>
     )
